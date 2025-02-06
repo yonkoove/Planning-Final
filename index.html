@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programme Journalier - API Cameroun</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="background-overlay"></div>
+        <header>
+            <div class="time-left">
+                <div id="current-time"></div>
+                <div id="current-date"></div>
+            </div>
+            <div class="center-content">
+                <img src="logo.png" alt="Logo" style="display: block; margin: 0 auto;" width="150" height="112">
+            </div>
+            <div class="time-right">
+                <div id="current-time-right"></div>
+                <div id="current-date-right"></div>
+            </div>
+        </header>
+        <main>
+            <section id="programme">
+                <h2>Programme des Activités</h2>
+                <div class="carousel-container">
+                    <button class="prev-btn">❮</button>
+                    <div class="carousel">
+                        <div class="card">
+                            <img src="Rencontre.jpg" alt="Événement 1">
+                            <div class="card-content">
+                                <h3>Conférence sur l’investissement</h3>
+                                <p>Découvrez les meilleures opportunités pour investir en 2025.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="dejeuner.jpg" alt="Événement 2">
+                            <div class="card-content">
+                                <h3>Atelier sur le climat des affaires</h3>
+                                <p>Discussion sur les réformes économiques et les nouvelles tendances.</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="atelier.jpg" alt="Événement 3">
+                            <div class="card-content">
+                                <h3>Networking & Opportunités</h3>
+                                <p>Rencontrez des experts et développez votre réseau professionnel.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="next-btn">❯</button>
+                </div>
+            </section>
+            <div class="info-panel">
+                <div class="weather-widget">
+                    <h3>Météo - Yaoundé</h3>
+                    <div id="weather-info" class="weather-content">
+                        <!-- Weather information will be injected here -->
+                    </div>
+                    <img src="meteo.png" alt="Image de la météo" class="weather-image">
+                </div>
+                <section id="evenements">
+                    <h2>Événements à Venir</h2>
+                    <ul id="event-list">
+                        <li>
+                            <span class="calendar-icon">📅</span>
+                            <strong>--/--/2025</strong> - Cameroon Investment Forum
+                        </li>
+                        <li>
+                            <span class="calendar-icon">📅</span>
+                            <strong>--/Déc/2025</strong> - Diner des Investisseurs
+                        </li>
+                    </ul>
+                </section>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 API Cameroun. Tous droits réservés.</p>
+            <p>Made by Ove Ove</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
