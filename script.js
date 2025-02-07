@@ -220,19 +220,28 @@ function init() {
 
 // Démarrage de l'application
 document.addEventListener('DOMContentLoaded', init);
+
+// Carrousel défilant automatique
 document.addEventListener("DOMContentLoaded", function() {
     const carousel = document.querySelector(".carousel");
     let scrollAmount = 0;
-    
+
+    // Fonction de défilement automatique
     function autoScroll() {
-        if (scrollAmount < carousel.scrollWidth - carousel.clientWidth) {
-            scrollAmount += carousel.clientWidth; // Déplace d’une carte entière
+        const carouselWidth = carousel.clientWidth;
+        const totalWidth = carousel.scrollWidth;
+
+        // Vérifie si on peut encore défiler ou revenir au début
+        if (scrollAmount < totalWidth - carouselWidth) {
+            scrollAmount += carouselWidth; // Déplace d’une carte entière
         } else {
             scrollAmount = 0; // Reviens au début
         }
+
+        // Défilement avec comportement lisse
         carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
     }
 
-    setInterval(autoScroll, 4000); // Défilement toutes les 4 sec
+    // Défilement toutes les 4 secondes
+    setInterval(autoScroll, 4000); 
 });
-
