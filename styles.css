@@ -3,7 +3,7 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: url('background-image.jpg') no-repeat center center fixed;
+    background: url('fond_page.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #333;
 }
