@@ -476,13 +476,3 @@ footer {
 .next-btn {
     right: 10px;
 }
-
-/* CSS pour agrandir la carte de l'événement de 11h30 */
-.card.event-1130 {
-    height: 400px; /* Ajustez cette valeur selon vos besoins */
-    overflow: hidden;
-}
-
-.card.event-1130 .card-content {
-    padding: 20px; /* Ajustez également le padding si nécessaire */
-}
