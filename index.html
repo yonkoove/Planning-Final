@@ -29,26 +29,39 @@
         <!-- Programme des Activités -->
         <main>
             <section id="programme">
-                <h2>Programme des Activités</h2>
-                
-                <!-- Carrousel Principal -->
-                <div class="carousel-container">
-                    <button class="prev-btn">❮</button>
-                    <div class="carousel">
-                        <div id="main-card" class="main-card" style="display:none;">
-                            <img src="" alt="Événement Principal">
-                            <div class="card-content">
-                                <h3 id="main-card-title"></h3>
-                                <p id="main-card-time"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="next-btn">❯</button>
+    <h2>Programme des Activités</h2>
+    <div class="carousel-container">
+        <button class="prev-btn">❮</button>
+        <div class="carousel">
+            <!-- Carte principale de l'activité -->
+            <div class="activity-card">
+                <img src="briefing.jpg" alt="Réunion de Coordination">
+                <div class="card-content">
+                    <h3>Réunion de Coordination</h3>
+                    <p>11:30h GMT</p>
                 </div>
-                
-                <!-- Autres Activités -->
-                <div id="secondary-cards" class="secondary-cards"></div>
-            </section>
+            </div>
+        </div>
+        <button class="next-btn">❯</button>
+    </div>
+
+    <!-- Cartes des autres activités -->
+    <div class="activities-grid">
+        <div class="activity-card-small">
+            <img src="rencontre.jpg" alt="Rencontre avec les investisseurs">
+            <div class="badge">À venir</div>
+            <h3>Rencontre avec les investisseurs</h3>
+            <p>10:30h GMT</p>
+        </div>
+        <div class="activity-card-small">
+            <img src="atelier.jpg" alt="Atelier sur le climat des affaires">
+            <div class="badge">En cours</div>
+            <h3>Atelier sur le climat des affaires</h3>
+            <p>14:00h GMT</p>
+        </div>
+        <!-- Ajoutez d'autres cartes ici -->
+    </div>
+</section>
 
             <div class="info-panel">
                 <!-- Informations supplémentaires ici si nécessaire -->
