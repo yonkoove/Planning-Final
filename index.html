@@ -10,6 +10,8 @@
 <body>
     <div class="container">
         <div class="background-overlay"></div>
+        
+        <!-- Header Original -->
         <header>
             <div class="time-left">
                 <div id="current-time"></div>
@@ -23,38 +25,44 @@
                 <div id="current-date-right"></div>
             </div>
         </header>
+
+        <!-- Programme des Activités -->
         <main>
             <section id="programme">
                 <h2>Programme des Activités</h2>
+                
+                <!-- Carrousel Principal -->
                 <div class="carousel-container">
                     <button class="prev-btn">❮</button>
                     <div class="carousel">
-                        <!-- Carte principale - Activité à venir -->
-                        <div class="card main-card" id="main-card">
-                            <img src="briefing.jpg" alt="Activité principale">
+                        <div id="main-card" class="main-card" style="display:none;">
+                            <img src="" alt="Événement Principal">
                             <div class="card-content">
-                                <h3 id="main-card-title">Réunion de Coordination de la Sous-Direction</h3>
-                                <p id="main-card-time">11:30h GMT</p>
+                                <h3 id="main-card-title"></h3>
+                                <p id="main-card-time"></p>
                             </div>
-                        </div>
-
-                        <!-- Cartes secondaires des autres activités -->
-                        <div class="secondary-cards" id="secondary-cards">
-                            <!-- Les cartes seront ajoutées dynamiquement ici -->
                         </div>
                     </div>
                     <button class="next-btn">❯</button>
                 </div>
+                
+                <!-- Autres Activités -->
+                <div id="secondary-cards" class="secondary-cards"></div>
             </section>
+
+            <div class="info-panel">
+                <!-- Informations supplémentaires ici si nécessaire -->
+            </div>
         </main>
     </div>
-    
+
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 API Cameroun. Tous droits réservés.</p>
             <p>Made by Ove Ove</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
