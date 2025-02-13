@@ -516,3 +516,63 @@ footer {
     font-size: 1.1rem;
     color: #555;
 }
+
+/* Mettre le titre en bleu */
+h2 {
+    color: blue;
+    text-align: center;
+}
+
+/* Centrer la carte et l'agrandir */
+.card {
+    width: 60%; /* Augmente la taille de la carte */
+    max-width: 800px; /* Empêche qu'elle devienne trop large sur grands écrans */
+    margin: 0 auto; /* Centre la carte horizontalement */
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuster l'image pour qu'elle soit bien proportionnée */
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Espacer les boutons de navigation */
+.carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 50px; /* Ajoute un padding pour éloigner les boutons */
+}
+
+/* Styliser les boutons de navigation */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Ajuster le contenu de la carte */
+.card-content {
+    text-align: center;
+    font-size: 1.2em;
+}
