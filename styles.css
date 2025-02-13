@@ -479,7 +479,7 @@ footer {
 
 /* CSS pour agrandir la carte de l'événement de 11h30 */
 .card.event-1130 {
-    height: 300px; /* Ajustez cette valeur selon vos besoins */
+    height: 400px; /* Ajustez cette valeur selon vos besoins */
     overflow: hidden;
 }
 
