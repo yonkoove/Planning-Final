@@ -14,7 +14,9 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    background: rgba(0, 0, 0, 0.5); /* Overlay pour l'header */
+    background: url('header-background.jpg') no-repeat center center; /* Lien vers l'image de fond */
+    background-size: cover;
+    position: relative; /* Pour placer le logo dessus */
 }
 
 header .time-left,
@@ -31,6 +33,19 @@ header #current-date {
 header .center-content img {
     max-width: 150px;
     height: auto;
+    z-index: 10; /* Assure que l'image du logo se superpose à l'image de fond */
+}
+
+/* Ajout d'une légère superposition sombre pour améliorer la lisibilité du texte */
+header .time-left, header .time-right {
+    background-color: rgba(0, 0, 0, 0.5); /* Opacité sombre */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Optionnel : si vous souhaitez ajouter une couleur de survol ou un effet pour les éléments du header */
+header .time-left:hover, header .time-right:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Survol plus sombre */
 }
 
 /* Container principal */
