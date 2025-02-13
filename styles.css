@@ -118,6 +118,26 @@
     right: 10px;
 }
 
+/* Styles du header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .time-left, header .time-right {
+    font-size: 1.2em;
+    color: #333;
+}
+
+header .center-content img {
+    width: 150px;
+    height: 112px;
+}
+
 /* Ajout des styles généraux */
 body {
     font-family: 'Poppins', sans-serif;
@@ -131,18 +151,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-}
-
-header .time-left, header .time-right {
-    font-size: 1.2em;
-    color: #333;
 }
 
 footer {
