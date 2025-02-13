@@ -1,169 +1,246 @@
-/* Structure du programme */
-#programme {
+/* Définir l'image de fond de la page */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('images/background.jpg'); /* Remplacez par le chemin de votre image */
+    background-size: cover; /* L'image couvre toute la page */
+    background-position: center center; /* Centre l'image */
+    background-attachment: fixed; /* L'image reste fixe lors du défilement */
+    color: #fff; /* Texte clair sur le fond sombre */
+}
+
+/* Structure du container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
+    z-index: 2; /* Assure que le contenu reste au-dessus du fond */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Ombre légère sur fond */
+    position: relative;
+    z-index: 3;
+}
+
+header .time-left, header .time-right {
     text-align: center;
 }
 
-/* Conteneur des cartes (carrousel) */
+header .center-content img {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 112px;
+}
+
+/* Style des heures et de la date dans le header */
+#current-time, #current-time-right {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#current-date, #current-date-right {
+    font-size: 1.2em;
+}
+
+/* Programme des activités */
+#programme {
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
+}
+
+#programme h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #fff; /* Couleur du titre */
+}
+
 .carousel-container {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     position: relative;
+    margin-bottom: 20px;
 }
 
-/* Carte principale */
-.main-card {
-    width: 300px;
-    height: 400px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
+.carousel {
     display: flex;
-    flex-direction: column;
+    overflow: hidden;
+    width: 80%;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    transform: scale(1.2); /* Carte principale plus grande */
 }
 
-/* Contenu de la carte principale */
-.main-card img {
+.activity-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 0 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.activity-card img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
     border-radius: 10px;
 }
 
-.main-card .card-content {
-    text-align: center;
+.activity-card h3 {
+    margin: 15px 0;
+    font-size: 1.3em;
 }
 
-.main-card h3 {
+.activity-card p {
+    font-size: 1.1em;
+}
+
+.carousel-container .prev-btn, .carousel-container .next-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
     font-size: 1.5em;
-    margin: 10px 0;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
 }
 
-.main-card p {
-    font-size: 1.2em;
-    color: #555;
+.carousel-container .prev-btn {
+    left: 10px;
 }
 
-/* Cartes secondaires */
-.secondary-cards {
+.carousel-container .next-btn {
+    right: 10px;
+}
+
+/* Style des cartes des autres activités */
+.activities-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
+    gap: 15px;
 }
 
-.secondary-cards .card {
-    width: 250px;
-    height: 300px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.activity-card-small {
+    width: 220px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
 }
 
-.secondary-cards .card img {
+.activity-card-small img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.activity-card-small h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.activity-card-small p {
+    font-size: 1em;
+}
+
+.badge {
+    background-color: #ff6347;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Section des informations */
+.info-panel {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.card {
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card img {
     width: 100%;
     height: 150px;
     object-fit: cover;
     border-radius: 10px;
 }
 
-/* Badges En Cours ou A Venir */
-.badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(255, 0, 0, 0.7);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.9em;
+.card h3 {
+    margin: 15px 0;
 }
 
-.badge.upcoming {
-    background-color: rgba(0, 255, 0, 0.7);
+.card p {
+    font-size: 1.1em;
 }
 
-/* Boutons de défilement */
-.prev-btn, .next-btn {
-    background-color: #fff;
-    border: none;
-    font-size: 2em;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    z-index: 10;
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-
-/* Styles du header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-header .time-left, header .time-right {
-    font-size: 1.2em;
-    color: #333;
-}
-
-header .center-content img {
-    width: 150px;
-    height: 112px;
-}
-
-/* Ajout des styles généraux */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f5f5f5;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
+/* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #222;
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    position: relative;
+    z-index: 3;
 }
 
 footer .footer-content {
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
-footer p {
+footer .footer-content p {
     margin: 5px 0;
+}
+
+/* Animation du carrousel des événements */
+.event-item {
+    opacity: 0.5;
+    transition: opacity 1s ease-in-out;
+}
+
+.event-item.active {
+    opacity: 1;
+}
+
+.event-item.animate {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
