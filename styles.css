@@ -1,227 +1,478 @@
-/* Style global de la page */
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: url('fond_page.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #333;
+root {
+    --primary-color: #0066cc;     /* Bleu principal */
+    --secondary-color: #003366;   /* Bleu foncé */
+    --light-blue: #4d94ff;       /* Bleu clair */
+    --text-color: #333333;
+    --white: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --accent-color: var(--light-blue);
 }
 
-/* Header */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url('fond_page.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text-color);
+}
+
+.container {
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
-    background: url('header-background.jpg') no-repeat center center; /* Lien vers l'image de fond */
+    padding: 1rem 2rem;
+    background-image: url('fond.jpg');
     background-size: cover;
-    position: relative; /* Pour placer le logo dessus */
+    background-position: center;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-header .time-left,
-header .time-right {
-    color: white;
+.center-content h1 {
+    color: gold;
+}
+
+.center-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: gold;
+}
+
+.flag {
+    height: auto;
+    width: 80px;
+    border-radius: 5px;
+}
+
+.time-left, .time-right {
+    font-size: 1.2rem;
     text-align: center;
 }
 
-header #current-time,
-header #current-date {
-    font-size: 1.2em;
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    flex-grow: 1;
 }
 
-header .center-content img {
-    max-width: 150px;
-    height: auto;
-    z-index: 10; /* Assure que l'image du logo se superpose à l'image de fond */
+.schedule-container {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
-/* Ajout d'une légère superposition sombre pour améliorer la lisibilité du texte */
-header .time-left, header .time-right {
-    background-color: rgba(0, 0, 0, 0.5); /* Opacité sombre */
-    padding: 10px;
+.schedule-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.activities-carousel {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of cards */
+    margin: 2rem 0;
+}
+
+.activities-track {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.activity-item {
+    position: absolute;
+    width: 400px;
+    min-height: 220px;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    border: 1px solid rgba(0, 102, 204, 0.2);
+}
+
+.activity-item.active {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+    z-index: 2;
+}
+
+.activity-item.prev {
+    opacity: 0.7;
+    transform: scale(0.85) translateX(-100%);
+    z-index: 1;
+}
+
+.activity-item.next {
+    opacity: 0.7;
+    transform: scale(0.85) translateX(100%);
+    z-index: 1;
+}
+
+.activity-time {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.activity-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activity-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.activity-description {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    opacity: 0.9;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.carousel-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    z-index: 3;
+}
+
+.control-button {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.control-button:hover {
+    background: var(--secondary-color);
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.info-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.weather-widget, .news-ticker {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.weather-widget h3, .news-ticker h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.weather-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#events-content {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.event-item {
+    padding: 1rem;
+    border-left: 4px solid var(--primary-color);
+    margin-bottom: 1rem;
+    background: var(--white);
+    border-radius: 0 10px 10px 0;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.event-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes slideUpEvent {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.event-item.animate {
+    animation: slideUpEvent 1s ease forwards;
+}
+
+#current-time, #current-time-right {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#current-date, #current-date-right {
+    font-size: 1.2rem;
+    color: var(--white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.activity-card {
+    display: inline-block; /* Allow cards to sit next to each other */
+    width: 300px; /* Set a fixed width for the cards */
+    height: 200px; /* Set a fixed height for the cards */
+    background-size: cover; /* Ensure the image covers the card */
+    background-position: center; /* Center the background image */
+    border-radius: 10px; /* Rounded corners */
+    margin: 10px; /* Space between cards */
+    color: white; /* Text color */
+    position: relative; /* Positioning for text */
+    padding: 15px; /* Add padding for better spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
+}
+
+.activity-card h3,
+.activity-card p {
+    position: absolute; /* Position text absolutely */
+    bottom: 10px; /* Position text at the bottom */
+    left: 10px; /* Add some left margin */
+    margin: 0; /* Remove default margin */
+    color: white; /* Ensure text is readable over images */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Shadow for better visibility */
+}
+
+@media screen and (min-width: 1920px) {
+    body {
+        font-size: 18px;
+    }
+}
+.weather-image {
+    width: 100%; /* Make the image responsive */
+    max-width: 400px; /* Set a maximum width */
+    margin-top: 15px; /* Space above the image */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between cards */
+}
+
+.activity-card {
+    background-color: #f9f9f9; /* Card background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    overflow: hidden; /* Prevent overflow */
+    transition: transform 0.3s; /* Smooth transition */
+}
+
+.activity-card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+footer {
+    background-color: #333; /* Dark background color */
+    color: white; /* White text color */
+    text-align: center; /* Centered text */
+    padding: 20px; /* Padding around the footer */
+    position: relative; /* Positioning */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+}
+
+.footer-content p {
+    margin: 5px 0; /* Space between paragraphs in the footer */
+}
+.additional-activities-container {
+    margin: 20px 0; /* Space around the section */
+}
+
+.additional-activities-container h2 {
+    text-align: center; /* Center the title */
+    margin-bottom: 15px; /* Space below the title */
+}
+
+#evenements {
+    background: white;
+    padding: 15px;
     border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Optionnel : si vous souhaitez ajouter une couleur de survol ou un effet pour les éléments du header */
-header .time-left:hover, header .time-right:hover {
-    background-color: rgba(0, 0, 0, 0.8); /* Survol plus sombre */
+#evenements h2 {
+    color: #0073e6;
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
-/* Container principal */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    color: #fff;
+#event-list {
+    list-style: none;
+    padding: 0;
 }
 
-/* Section programme des activités */
+#event-list li {
+    display: flex;
+    align-items: center;
+    background: #f8f8f8;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-left: 5px solid #0073e6;
+    font-size: 0.9em;
+    transition: 0.3s ease-in-out;
+}
+
+#event-list li:hover {
+    background: #e6f0ff;
+}
+
+.calendar-icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+/* Conteneur général */
 #programme {
     text-align: center;
-    margin-top: 50px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
 }
 
-#programme h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-
-/* Carousel d'activités */
+/* Conteneur du carrousel */
 .carousel-container {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    overflow: hidden;
 }
 
+/* Carrousel contenant les cartes */
 .carousel {
     display: flex;
-    justify-content: center;
     gap: 20px;
+    transition: transform 0.5s ease-in-out;
 }
 
+/* Cartes individuelles */
+.card {
+    min-width: 100%;
+    height: 400px;
+    flex: 0 0 auto;
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Image en haut */
+.card img {
+    width: 100%;
+    height: 65%;
+    object-fit: cover;
+}
+
+/* Texte en bas */
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Styles des boutons de navigation */
 .prev-btn, .next-btn {
-    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
     border: none;
-    font-size: 2em;
-    color: #fff;
+    padding: 10px 15px;
+    font-size: 24px;
     cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .prev-btn {
-    position: absolute;
     left: 10px;
 }
 
 .next-btn {
-    position: absolute;
     right: 10px;
-}
-
-/* Carte principale de l'activité */
-.activity-card {
-    width: 90%;  /* Élégant mais élargi, presque plein écran */
-    max-width: 900px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    margin-bottom: 50px; /* Espacement supplémentaire pour séparer avec les autres cartes */
-    margin: 0 auto;
-}
-
-.activity-card img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.activity-card h3 {
-    font-size: 1.8em;
-    margin-top: 15px;
-    font-weight: 600;
-}
-
-.activity-card p {
-    font-size: 1.2em;
-}
-
-/* Grille des autres activités */
-.activities-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Remplir la ligne avec des colonnes minimales de 220px */
-    gap: 20px;
-    justify-items: center;
-    margin-top: 50px;
-}
-
-.activity-card-small {
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 15px;
-    border-radius: 10px;
-    position: relative;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.activity-card-small img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.activity-card-small h3 {
-    margin-top: 10px;
-    font-size: 1.2em;
-}
-
-.activity-card-small p {
-    font-size: 1em;
-}
-
-/* Badge pour indiquer "En cours" ou "À venir" */
-.badge {
-    background-color: #ff6347;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.9em;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
-
-/* Animations pour les événements */
-@keyframes rotateEvents {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-.event-item {
-    animation: rotateEvents 1s ease-in-out;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-    }
-
-    header .time-left, header .time-right {
-        font-size: 1em;
-    }
-
-    header #current-time,
-    header #current-date {
-        font-size: 1em;
-    }
-
-    .activity-card img {
-        height: 250px;
-    }
-
-    .activity-card-small img {
-        height: 120px;
-    }
-
-    .activities-grid {
-        grid-template-columns: 1fr 1fr;
-    }
 }
