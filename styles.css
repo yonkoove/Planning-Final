@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-image: url('images/background.jpg'); /* Remplacez par le chemin de votre image */
+    background-image: url('fond_page.jpg'); /* Remplacez par le chemin de votre image */
     background-size: cover; /* L'image couvre toute la page */
     background-position: center center; /* Centre l'image */
     background-attachment: fixed; /* L'image reste fixe lors du défilement */
